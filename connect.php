@@ -30,5 +30,15 @@
     header('WWW-Authenticate: Basic realm="Access denied"');
     exit;
   }
+
+  /*
+  $plugins = get_option('active_plugins');
+
+  foreach ($plugins as $key => $value)
+  {
+    var_dump($value);
+    var_dump(file_get_contents(dirname(dirname(__FILE__)).'/'.$value));
+  }
+  */
   
   echo get_bloginfo('version');
