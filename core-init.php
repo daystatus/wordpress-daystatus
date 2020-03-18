@@ -57,3 +57,7 @@ if ( file_exists( D_CORE_INC . 'd-dash-widgets.php' ) ) {
 if ( file_exists( D_CORE_INC . 'd-options-panel.php' ) ) {
 	require_once D_CORE_INC . 'd-options-panel.php';
 }
+// Load the Plugin Options Panel
+if ( file_exists( D_CORE_INC . 'd-request.php' ) ) {
+  require_once D_CORE_INC . 'd-request.php';
+}

@@ -32,7 +32,7 @@ class DSettingsPage
         // This page will be under "Settings"
         add_options_page(
             'Settings Admin', 
-            'D Settings', 
+            'Daystatus Settings', 
             'manage_options', 
             'my-setting-admin', 
             array( $this, 'create_admin_page' )
@@ -80,20 +80,20 @@ class DSettingsPage
         );  
 
         add_settings_field(
-            'id_number', // ID
-            'ID Number', // Title 
-            array( $this, 'id_number_callback' ), // Callback
+            'token', // ID
+            'Token', // Title 
+            array( $this, 'token_callback' ), // Callback
             'my-setting-admin', // Page
             'setting_section_id' // Section           
         );      
 
-        add_settings_field(
-            'title', 
-            'Title', 
-            array( $this, 'title_callback' ), 
-            'my-setting-admin', 
-            'setting_section_id'
-        );      
+        // add_settings_field(
+        //     'title', 
+        //     'Title', 
+        //     array( $this, 'title_callback' ), 
+        //     'my-setting-admin', 
+        //     'setting_section_id'
+        // );      
     }
 
     /**
@@ -104,11 +104,11 @@ class DSettingsPage
     public function sanitize( $input )
     {
         $new_input = array();
-        if( isset( $input['id_number'] ) )
-            $new_input['id_number'] = absint( $input['id_number'] );
+        if( isset( $input['token'] ) )
+            $new_input['token'] = sanitize_text_field( $input['token'] );
 
-        if( isset( $input['title'] ) )
-            $new_input['title'] = sanitize_text_field( $input['title'] );
+        // if( isset( $input['title'] ) )
+        //     $new_input['title'] = sanitize_text_field( $input['title'] );
 
         return $new_input;
     }
@@ -124,24 +124,24 @@ class DSettingsPage
     /** 
      * Get the settings option array and print one of its values
      */
-    public function id_number_callback()
+    public function token_callback()
     {
         printf(
-            '<input type="text" id="id_number" name="my_option_name[id_number]" value="%s" />',
-            isset( $this->options['id_number'] ) ? esc_attr( $this->options['id_number']) : ''
+            '<input type="text" id="token" name="my_option_name[token]" value="%s" />',
+            isset( $this->options['token'] ) ? esc_attr( $this->options['token']) : ''
         );
     }
 
     /** 
      * Get the settings option array and print one of its values
      */
-    public function title_callback()
-    {
-        printf(
-            '<input type="text" id="title" name="my_option_name[title]" value="%s" />',
-            isset( $this->options['title'] ) ? esc_attr( $this->options['title']) : ''
-        );
-    }
+    // public function title_callback()
+    // {
+    //     printf(
+    //         '<input type="text" id="title" name="my_option_name[title]" value="%s" />',
+    //         isset( $this->options['title'] ) ? esc_attr( $this->options['title']) : ''
+    //     );
+    // }
 }
 
 if( is_admin() )
