@@ -19,7 +19,7 @@ define('D_CORE_JS',plugins_url( 'assets/js/', __FILE__ ));
 *
 */
 function d_register_core_css(){
-wp_enqueue_style('d-core', D_CORE_CSS . 'd-core.css',null,time('s'),'all');
+wp_enqueue_style('d-core', D_CORE_CSS . 'd-core.css',null,date('s'),'all');
 };
 add_action( 'wp_enqueue_scripts', 'd_register_core_css' );    
 /*
