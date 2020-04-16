@@ -12,7 +12,7 @@
 
   $data = new DRequestPage();
 
-  if ($_SERVER['QUERY_STRING'] !== $data->getToken())
+  if ($_SERVER['QUERY_STRING'] !== 't='.$data->getToken())
   {
     exit;
   }
